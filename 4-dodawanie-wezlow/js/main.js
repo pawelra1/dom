@@ -1,45 +1,61 @@
+var output = document.getElementById("output");
 
-var pierwszyDiv = document.getElementById("par-first");
-console.log(pierwszyDiv);
+//tworzę nowy element
+var newElement = document.createElement("p");
 
-//pobranie rodzica elementu parentElement
-var rodzicPierwszegoDiva = pierwszyDiv.parentElement;
-console.log( rodzicPierwszegoDiva );
+//dodanie id do p
+newElement.setAttribute('id', 'newElement');
 
-//pobranie dzieci rodzica - wszystkie węzły elementu, w tym białe znaki pomiędzy elementami oraz komentarze
-var dzieciSekcji = rodzicPierwszegoDiva.childNodes;
-console.log(dzieciSekcji);
+//dodanie klasy (class) do p
+newElement.className = "nowaklasa";
 
-//pobranie konkretnego dziecka za pomocą indeksu jak w tablicach
-console.log(dzieciSekcji[1]);
+//tworzę tekst do nowego elementu
+var elementContent = document.createTextNode("Zawartość akapitu");
+
+//wstawiam kontent do akapitu
+newElement.appendChild( elementContent );
+
+//wstawiam nowy element do miejsca docelowego
+output.appendChild(newElement);
 
 
-//children pobiera dzieci elementu tylko te, które są też elementem
-var fajniejszeDzieciSekcji = rodzicPierwszegoDiva.children;
-console.log(fajniejszeDzieciSekcji);
 
-//firstElementChild pobiera pierwszy element dziecka
-var pierwszeDzieckoSekcji = rodzicPierwszegoDiva.firstElementChild;
-console.log(pierwszeDzieckoSekcji);
+/* werja light*/
 
-//lastElementChild pobiera ostatni element dziecka
-var ostatnieDzieckoElementu = rodzicPierwszegoDiva.lastElementChild;
-console.log(ostatnieDzieckoElementu);
+var nowyElement2 = document.createElement ("button");
+nowyElement2.innerHTML = "Zawartość buttona";
+output.appendChild(nowyElement2);
 
-//rodzeństwo
-var link = document.querySelector("#par-first .link");
-console.log(link);
+/* werja super light - on nadpisuje */
+output.innerHTML = "<h4>Nagłówek H4</h4>"
 
-//previousElementSibling pobiera poprzedni element z tego samego poziomu struktury
-var rodzenstwoLink = link.previousElementSibling;
-console.log(rodzenstwoLink);
+//usuwanie elementów = pierwszy paragraw w div#par-first oraz div#output
+var rodzic = document.getElementById('par-first');
+var akapit = rodzic.firstElementChild;
+rodzic.removeChild(akapit);
 
-var rodzenstwoLinkNastepny = link.nextElementSibling;
-console.log(rodzenstwoLinkNastepny);
+rodzic.removeChild( document.getElementById("output") );
 
-rodzicPierwszegoDiva.childNodes.forEach(function(element){
-    if (element.nodeType == 1) {
+//usunięcie 
+rodzic.parentElement.removeChild(rodzic);
 
-    console.log( element.nodeType);
-    }
-})
+//usuwanie atrybutu
+rodzic.removeAttribute("id");
+
+//insertBefore
+/*var rodzic2 = document.getElementById("par-second");
+var newH6 = document.createElement("h6");
+newH6.innerText = "Zawartość h6-stki";
+var firstElem = rodzic2.firstElementChild;
+
+rodzic2.insertBefore(newH6, firstElem);*/
+
+var tytul = document.getElementsByTagName("h1")[0];
+
+tytul.innerHTML = "NOOOOWAAA ZAWARTOŚŚŚĆĆ";
+
+//pobiera zawartość (wnętrze) elementu wraz ze znacznikami HTML
+console.log(tytul.innerHTML);
+
+//pobiera zawartość wraz ze znacznikami HTML
+console.log(tytul.outerHTML);

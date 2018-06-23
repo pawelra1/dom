@@ -15,7 +15,7 @@
         
         <div id="par-first">
             <p>Tekst w akapicie</p>
-            <a href="#" class="link">Link 1</a>
+            <a href="#" class="link" onclick="alert('Jestem link i podpięto do mnie stary sposób rejestracji zdarzeń');">Link 1</a>
             <div id="output"></div>
             <a href="http://akademia108.pl" class="link">Link 2</a>
         </div>
@@ -27,10 +27,14 @@
         <a href="http://akademia108.pl" class="link">LINK 1</a>
         <a href="" class="link">LINK 2</a>
         <a href="" class="link">LINK 3</a>
-        <a href="" class="link superlink">LINK 4</a>
+        <a href="" class="link superlink" id="klik_akcja">LINK 4</a>
         <a href="" class="link superlink">LINK 5</a>
         
     </section>
+    
+    <div id="event_div" style="padding: 15px; border 1px solid #000;">
+        <button id="btn">Kliknij</button>
+    </div>
     <script src="js/main.js"></script>
 </body>
 </html>
